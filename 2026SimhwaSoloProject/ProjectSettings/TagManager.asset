@@ -2,17 +2,17 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 
@@ -41,3 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Agent
+    uniqueID: 1570338237
+    locked: 0
+  - name: Weapon
+    uniqueID: 1819126209
+    locked: 0
+  - name: VFX
+    uniqueID: 4107935537
+    locked: 0
+  - name: UI
+    uniqueID: 1840202795
+    locked: 0
+  m_RenderingLayers:
+  - Default

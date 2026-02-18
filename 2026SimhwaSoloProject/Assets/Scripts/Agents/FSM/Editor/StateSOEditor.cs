@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+namespace Agents.FSM.Editor
+{
+    [UnityEditor.CustomEditor(typeof(StateSO))]
+    public class StateSoEditor : UnityEditor.Editor
+    {
+        [SerializeField] private VisualTreeAsset editorView = default;
+        
+        public override UnityEngine.UIElements.VisualElement CreateInspectorGUI()
+        {
+            VisualElement root = new VisualElement();
+            editorView.CloneTree(root);
+
+            DropdownField dropdownField = root.Q<DropdownField>("ClassDropdownField");
+
+            FillDropdownField(dropdownField);
+
+            return root;
+        }
+
+        private void FillDropdownField(DropdownField dropdownField)
+        {
+            dropdownField.choices.Clear();
+
+            Assembly mainAssembly = Assembly.GetAssembly(typeof(AgentState));
+
+            List<Type> derivedTypes = mainAssembly.GetTypes()
+                .Where(type => type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AgentState)))
+                .ToList();
+            
+            dropdownField.choices.AddRange(derivedTypes.Select(type => type.FullName));
+
+            if (dropdownField.choices.Count > 0 && string.IsNullOrEmpty(dropdownField.value))
+            {
+                dropdownField.SetValueWithoutNotify(derivedTypes[0].FullName);
+            }
+        }
+    }
+}
