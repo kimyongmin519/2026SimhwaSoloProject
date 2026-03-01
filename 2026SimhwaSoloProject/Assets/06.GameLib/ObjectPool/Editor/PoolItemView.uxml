@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/06.GameLib/ObjectPool/Editor/PoolItemViewStyle.uss?fileID=7433441132597879392&amp;guid=0604ffb8c9e29da4fa024efdf7bea26e&amp;type=3#PoolItemViewStyle" />
+    <ui:VisualElement name="PoolItem" class="pool-item" style="background-color: rgb(55, 55, 55);">
+        <ui:Label text="Empty" name="WarningLabel" class="warning-label" />
+        <ui:Label text="namedajsd" name="ItemName" enable-rich-text="false" class="name-label" style="flex-grow: 1; flex-basis: 10px; text-overflow: ellipsis; overflow: hidden;" />
+        <ui:Button text="X" name="DeleteBtn" class="del-btn" />
+    </ui:VisualElement>
+</ui:UXML>

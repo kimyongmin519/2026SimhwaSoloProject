@@ -1,16 +1,21 @@
-using System;
-using Systems.AnimationSystem;
+using Systems.CombatSystem;
 using UnityEngine;
 
 namespace Weapon.Guns
 {
-    public class Pistol : Gun
+    public class Pistol : AbstractGun
     {
-        [SerializeField] private AnimParamSO testParam;
-
         public override void WeaponUse()
         {
-            _renderer.PlayClip(testParam.HashValue);
+            if (_isFiring || !_canUseGun) return;
+
+            BulletSpawn();
+        }
+        public override void WeaponEquip()
+        {
+            base.WeaponEquip();
+            
+            OnWeaponEquipEvent?.Invoke();
         }
 
         public override void WeaponServeSkill()

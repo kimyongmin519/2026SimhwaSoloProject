@@ -25,7 +25,7 @@ namespace Core.Modules
         }
         protected virtual void AfterInitializeComponents()
         {
-            foreach (IAfterModule module in _moduleDict.Values.OfType<IAfterModule>())
+            foreach (IAfterInitModule module in _moduleDict.Values.OfType<IAfterInitModule>())
             {
                 module.AfterInitialize();
             }

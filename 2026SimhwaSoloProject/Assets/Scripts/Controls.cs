@@ -145,6 +145,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MainWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""369d2651-b7ab-4339-acdd-330dacfc1006"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""25a063e1-f0e3-478b-bc9e-18d8836b994c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MeleeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4dfc9f0-3f1e-4a33-be13-7fe114940dda"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -431,6 +458,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da0d0fc1-6854-45f0-b0f2-35f2ea8560dc"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MainWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4acf5ab-be8e-45d8-a222-e693d5e7ca6c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SecondaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""668ce4ec-9b2c-4348-9ff4-6fa8872ae2f0"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MeleeWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1024,6 +1084,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
+        m_Player_MainWeapon = m_Player.FindAction("MainWeapon", throwIfNotFound: true);
+        m_Player_SecondaryWeapon = m_Player.FindAction("SecondaryWeapon", throwIfNotFound: true);
+        m_Player_MeleeWeapon = m_Player.FindAction("MeleeWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1123,6 +1186,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_MousePos;
+    private readonly InputAction m_Player_MainWeapon;
+    private readonly InputAction m_Player_SecondaryWeapon;
+    private readonly InputAction m_Player_MeleeWeapon;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1158,6 +1224,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/MousePos".
         /// </summary>
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MainWeapon".
+        /// </summary>
+        public InputAction @MainWeapon => m_Wrapper.m_Player_MainWeapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SecondaryWeapon".
+        /// </summary>
+        public InputAction @SecondaryWeapon => m_Wrapper.m_Player_SecondaryWeapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MeleeWeapon".
+        /// </summary>
+        public InputAction @MeleeWeapon => m_Wrapper.m_Player_MeleeWeapon;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1202,6 +1280,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
+            @MainWeapon.started += instance.OnMainWeapon;
+            @MainWeapon.performed += instance.OnMainWeapon;
+            @MainWeapon.canceled += instance.OnMainWeapon;
+            @SecondaryWeapon.started += instance.OnSecondaryWeapon;
+            @SecondaryWeapon.performed += instance.OnSecondaryWeapon;
+            @SecondaryWeapon.canceled += instance.OnSecondaryWeapon;
+            @MeleeWeapon.started += instance.OnMeleeWeapon;
+            @MeleeWeapon.performed += instance.OnMeleeWeapon;
+            @MeleeWeapon.canceled += instance.OnMeleeWeapon;
         }
 
         /// <summary>
@@ -1231,6 +1318,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
+            @MainWeapon.started -= instance.OnMainWeapon;
+            @MainWeapon.performed -= instance.OnMainWeapon;
+            @MainWeapon.canceled -= instance.OnMainWeapon;
+            @SecondaryWeapon.started -= instance.OnSecondaryWeapon;
+            @SecondaryWeapon.performed -= instance.OnSecondaryWeapon;
+            @SecondaryWeapon.canceled -= instance.OnSecondaryWeapon;
+            @MeleeWeapon.started -= instance.OnMeleeWeapon;
+            @MeleeWeapon.performed -= instance.OnMeleeWeapon;
+            @MeleeWeapon.canceled -= instance.OnMeleeWeapon;
         }
 
         /// <summary>
@@ -1573,6 +1669,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePos(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MainWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMainWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SecondaryWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSecondaryWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MeleeWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMeleeWeapon(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

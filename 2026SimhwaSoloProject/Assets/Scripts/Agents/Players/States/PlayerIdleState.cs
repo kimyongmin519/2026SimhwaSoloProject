@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Agents.Players.States
 {
-    public class PlayerIdleState : AbstractPlayerState
+    public class PlayerIdleState : AbstractPlayerState, ICanJumpState
     {
         public PlayerIdleState(Agent owner) : base(owner)
         {

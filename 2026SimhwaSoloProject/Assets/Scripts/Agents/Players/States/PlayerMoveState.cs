@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Agents.Players.States
 {
-    public class PlayerMoveState : AbstractPlayerState
+    public class PlayerMoveState : AbstractPlayerState, ICanJumpState
     {
         public PlayerMoveState(Agent owner) : base(owner)
         {
@@ -21,6 +21,9 @@ namespace Agents.Players.States
             {
                 _player.ChangeState(PlayerStateEnum.IDLE);
             }
+            
+            if(!_mover.IsGrounded)
+                _player.ChangeState(PlayerStateEnum.FALL);
         }
     }
 }

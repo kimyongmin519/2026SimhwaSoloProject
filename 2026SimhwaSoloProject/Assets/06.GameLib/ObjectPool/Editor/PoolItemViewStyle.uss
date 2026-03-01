@@ -1,0 +1,69 @@
+VisualElement {
+}
+
+.pool-item {
+    flex-direction: row;
+    flex-basis: 35px;
+    align-content: auto;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(159, 159, 159);
+    border-right-color: rgb(159, 159, 159);
+    border-top-color: rgb(159, 159, 159);
+    border-bottom-color: rgb(159, 159, 159);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    margin-bottom: 5px;
+}
+
+.del-btn {
+    background-color: rgb(176, 2, 2);
+    border-left-color: rgb(212, 15, 15);
+    border-right-color: rgb(212, 15, 15);
+    border-top-color: rgb(212, 15, 15);
+    border-bottom-color: rgb(164, 0, 0);
+}
+
+.del-btn:hover {
+    background-color: rgb(226, 0, 0);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.pool-item.active {
+    border-left-color: rgb(229, 229, 229);
+    border-right-color: rgb(229, 229, 229);
+    border-top-color: rgb(229, 229, 229);
+    border-bottom-color: rgb(229, 229, 229);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+}
+
+.warning-label {
+    background-color: rgb(173, 134, 0);
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-right: 5px;
+    display: none;
+}
+
+.warning-label.on {
+    display: flex;
+}

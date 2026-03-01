@@ -2,8 +2,8 @@ namespace Weapon
 {
     public enum WeaponType
     {
-        MAIN_GUN,
-        SECONDARY_GUN,
+        MAIN_WEAPON,
+        SECONDARY_WEAPON,
         MELEE,
         SERVE_ITEM,
         SPECIAL

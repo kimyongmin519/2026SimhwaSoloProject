@@ -1,5 +1,7 @@
 using Agents.FSM;
+using Agents.Players.States;
 using Core;
+using Core.Modules;
 using Systems;
 using UnityEngine;
 using Weapon;
@@ -8,6 +10,9 @@ namespace Agents.Players
 {
     public class Player : Agent
     {
+        [field:SerializeField,Header("플레이어 값")]
+        public float JumpPower { get; private set; }
+        
         [field:SerializeField] public PlayerInputSO PlayerInput { get; private set; }
         [SerializeField] private StateListSO stateList;
 
@@ -16,7 +21,7 @@ namespace Agents.Players
         #region 플레이어 부착
 
         [SerializeField] private TrackingOwner trackingOwner; 
-        private WeaponHandler _handler;
+        private PlayerWeaponHandler _handler;
         
         #endregion
 
@@ -24,9 +29,20 @@ namespace Agents.Players
         {
             base.InitializeComponents();
             _stateMachine = new AgentStateMachine(this, stateList.states);
-            _handler = GetModule<WeaponHandler>();
+            _handler = GetModule<PlayerWeaponHandler>();
             Debug.Assert(_handler != null, "Player handler is null");
-            _handler.Initialize(this);
+        }
+
+        protected override void AfterInitializeComponents()
+        {
+            base.AfterInitializeComponents();
+            PlayerInput.OnJumpPressed += HandleJumpKeyPressed;
+        }
+
+        private void HandleJumpKeyPressed()
+        {
+            if (_stateMachine.CurrentState is ICanJumpState)
+                ChangeState(PlayerStateEnum.JUMP);
         }
 
         protected override void Start()

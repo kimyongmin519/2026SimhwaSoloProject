@@ -4,7 +4,6 @@ using System.Linq;
 using Core;
 using Core.Modules;
 using UnityEngine;
-using Weapon.Guns;
 
 namespace Weapon
 {
@@ -20,7 +19,13 @@ namespace Weapon
             _inventoryDict = GetComponentsInChildren<Weapon>().ToDictionary(
                 weapon => weapon.WeaponData.WeaponType,
                 weapon => weapon.gameObject);
-            _currentWeapon = new NotifyValue<GameObject>(_inventoryDict[WeaponType.SECONDARY_GUN]);
+            
+            foreach (GameObject weapon in _inventoryDict.Values)
+            {
+                weapon.SetActive(false);
+            }
+            
+            _currentWeapon = new NotifyValue<GameObject>(null);
             
             Debug.Assert(_currentWeapon != null, "Not found weapon");
         }

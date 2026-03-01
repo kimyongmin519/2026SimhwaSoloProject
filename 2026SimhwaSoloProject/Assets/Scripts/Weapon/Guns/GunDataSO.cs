@@ -1,3 +1,4 @@
+using Systems.CombatSystem;
 using UnityEngine;
 
 namespace Weapon.Guns
@@ -19,5 +20,6 @@ namespace Weapon.Guns
         [field: SerializeField] public AnimationClip IdleAnimClip { get; private set; }
         [field:SerializeField] public AnimationClip ShotAnimClip {get; private set;}
         [field:SerializeField] public AnimationClip ReloadAnimClip {get; private set;}
+        [field:SerializeField] public Bullet BulletPrefab {get; private set;}
     }
 }

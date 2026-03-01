@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapon;
 
 namespace Core
 {
@@ -13,6 +14,8 @@ namespace Core
         public Vector2 ScreenMousePos { get; private set; }
         public event Action OnAttackPressed;
         public event Action OnAttackReleased;
+        public event Action OnJumpPressed;
+        public event Action<WeaponType> OnWeaponChanged;
 
         private void OnEnable()
         {
@@ -52,11 +55,31 @@ namespace Core
 
         public void OnJump(InputAction.CallbackContext context)
         {
+            if (context.performed)
+                OnJumpPressed?.Invoke();
         }
 
         public void OnMousePos(InputAction.CallbackContext context)
         {
             ScreenMousePos = context.ReadValue<Vector2>();
+        }
+
+        public void OnMainWeapon(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnWeaponChanged?.Invoke(WeaponType.MAIN_WEAPON);
+        }
+
+        public void OnSecondaryWeapon(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnWeaponChanged?.Invoke(WeaponType.SECONDARY_WEAPON);
+        }
+
+        public void OnMeleeWeapon(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnWeaponChanged?.Invoke(WeaponType.MELEE);
         }
     }
 }

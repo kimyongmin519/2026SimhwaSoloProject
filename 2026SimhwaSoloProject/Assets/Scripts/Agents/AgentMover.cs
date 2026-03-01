@@ -21,7 +21,7 @@ namespace Agents
         public bool IsGrounded { get; private set; }
         public event Action<bool> OnGroundStatusChange; 
         public event Action<Vector2> OnVelocityChange;
-        public bool CanManualMovement { get; private set; } = true;
+        public bool CanManualMovement { get; set; } = true;
         
         public void Initialize(ModuleOwner owner)
         {
@@ -35,7 +35,7 @@ namespace Agents
         public void SetMoveSpeedMultiplier(float value) => _moveSpeedMultiplier = value;
         public void SetGravityScale(float value) => _rigidbody.gravityScale = value;
         
-        public void AddForceToAgent(Vector2 force) => _rigidbody.AddForce(force, ForceMode2D.Impulse);
+        public void AddForceToAgent(Vector2 force) => _rigidbody.AddForce(force * _rigidbody.mass, ForceMode2D.Impulse);
 
         public void StopImmediately(bool xAxis, bool yAxis)
         {
@@ -58,20 +58,19 @@ namespace Agents
 
         private void MoveCharactor()
         {
-            bool before = IsGrounded;
-            IsGrounded = Physics2D.OverlapBox(transform.position, groundCheckSize, 0, whatIsGround);
-            
-            if (before != IsGrounded)
-                OnGroundStatusChange?.Invoke(IsGrounded);
-        }
-
-        private void CheckGround()
-        {
             if (CanManualMovement)
             {
                 _rigidbody.linearVelocityX = _movementX * moveSpeed * _moveSpeedMultiplier;
             }
             OnVelocityChange?.Invoke(_rigidbody.linearVelocity);
+        }
+        private void CheckGround()
+        {
+            bool before = IsGrounded;
+            IsGrounded = Physics2D.OverlapBox(transform.position, groundCheckSize, 0, whatIsGround);
+            
+            if (before != IsGrounded)
+                OnGroundStatusChange?.Invoke(IsGrounded);
         }
 
         private void OnDrawGizmos()

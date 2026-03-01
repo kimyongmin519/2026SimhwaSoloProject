@@ -6,7 +6,7 @@ namespace Agents
     public interface IMover
     {
         bool IsGrounded { get; }
-        bool CanManualMovement { get; }
+        bool CanManualMovement { get; set; }
         event Action<bool> OnGroundStatusChange;
         event Action<Vector2> OnVelocityChange;
         void SetMoveSpeedMultiplier(float value);

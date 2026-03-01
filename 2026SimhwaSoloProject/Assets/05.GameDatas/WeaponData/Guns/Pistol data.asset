@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd868224176c4f0ca34bd713b357c93c, type: 3}
+  m_Name: Pistol data
+  m_EditorClassIdentifier: 
+  <PingHeight>k__BackingField: -0.05
+  <WeaponPrefab>k__BackingField: {fileID: 6121617755787498727, guid: c3c143b7a3020dc4b8d202eb44865806, type: 3}
+  <WeaponType>k__BackingField: 1
+  <Ammo>k__BackingField: 12
+  <MaxAmmo>k__BackingField: 36
+  <Damage>k__BackingField: 1
+  <HeadShotDamage>k__BackingField: 3
+  <CanAutoFire>k__BackingField: 0
+  <EquipAnimClip>k__BackingField: {fileID: 7400000, guid: a23e6eaa45c1aa24985c74412b319b0f, type: 2}
+  <IdleAnimClip>k__BackingField: {fileID: 7400000, guid: f62e1de7153cc004dae49ff1123358f9, type: 2}
+  <ShotAnimClip>k__BackingField: {fileID: 7400000, guid: 7f59a64b4d46cf94698a572bdca62d44, type: 2}
+  <ReloadAnimClip>k__BackingField: {fileID: 0}
+  <BulletPrefab>k__BackingField: {fileID: 6156779373088864098, guid: 7c5918d75cf61d648b9e9a97416467c0, type: 3}

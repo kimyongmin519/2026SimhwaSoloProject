@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="Container" style="flex-direction: row;">
+        <ui:TextField placeholder-text="오브젝트 풀링할 이름을 입력하세요" name="PoolingName" binding-path="poolingName" style="flex-grow: 1; flex-basis: 10px;" />
+        <ui:Button text="변경야르!" name="ChangeBtn" />
+    </ui:VisualElement>
+</ui:UXML>

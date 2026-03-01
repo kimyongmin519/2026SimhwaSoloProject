@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Agents.Players.States
 {
-    public class AbstractPlayerState : AgentState
+    public abstract class AbstractPlayerState : AgentState
     {
         protected IMover _mover;
         protected Player _player;

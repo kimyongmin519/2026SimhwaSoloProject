@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/06.GameLib/ObjectPool/Editor/PoolManagerEditor.uss?fileID=7433441132597879392&amp;guid=874c1aefefaf197438bf8e7615fe9173&amp;type=3#PoolManagerEditor" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:VisualElement name="TopBar" style="flex-basis: 60px; flex-direction: column; justify-content: center; padding-top: 0; padding-right: 30px; padding-bottom: 0; padding-left: 30px;">
+            <ui:Button text="New Item Generate" name="CreateBtn" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" style="flex-grow: 1;">
+            <_06.GameLib.ObjectPool.Editor.MySplitView fixed-pane-initial-dimension="250">
+                <ui:VisualElement name="LetfPanel" style="flex-grow: 1;">
+                    <ui:ScrollView name="ItemView" style="flex-grow: 1; background-color: rgba(144, 144, 144, 0.09);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightPenel" style="flex-grow: 1;">
+                    <ui:VisualElement name="InspectorView" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </_06.GameLib.ObjectPool.Editor.MySplitView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
