@@ -14,10 +14,10 @@ namespace Agents.Players.States
         {
             base.Enter();
             
-            _mover.StopImmediately(false, true);
-            _mover.AddForceToAgent(Vector2.up * _player.JumpPower);
+            _player.Mover.StopImmediately(false, true);
+            _player.Mover.AddForceToAgent(Vector2.up * _player.JumpPower);
 
-            _mover.OnVelocityChange += HandleVelocityChanged;
+            _player.Mover.OnVelocityChange += HandleVelocityChanged;
         }
 
         private void HandleVelocityChanged(Vector2 velocity)
@@ -32,7 +32,7 @@ namespace Agents.Players.States
         {
             base.Exit();
             
-            _mover.OnVelocityChange -= HandleVelocityChanged;
+            _player.Mover.OnVelocityChange -= HandleVelocityChanged;
         }
     }
 }

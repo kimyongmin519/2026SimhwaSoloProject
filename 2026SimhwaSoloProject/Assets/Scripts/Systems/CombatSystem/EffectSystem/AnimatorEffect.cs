@@ -1,10 +1,11 @@
 using System;
+using _06.GameLib.ObjectPool.Runtime;
 using UnityEngine;
 
 namespace Systems.CombatSystem.EffectSystem
 {
     [RequireComponent(typeof(Animator))]
-    public class AnimatorEffect : MonoBehaviour
+    public class AnimatorEffect : MonoBehaviour, IPoolable
     {
         [SerializeField] private bool destroyOnFinish = true;
         private Animator _animator;
@@ -28,6 +29,13 @@ namespace Systems.CombatSystem.EffectSystem
             float passedTime = Time.time - _startTime;
             if (passedTime >= _lifeTime)
                 Destroy(gameObject);
+        }
+
+        [field:SerializeField] public PoolItemSO PoolItem { get; set; }
+        public GameObject GameObject => gameObject;
+        public void ResetItem()
+        {
+            
         }
     }
 }

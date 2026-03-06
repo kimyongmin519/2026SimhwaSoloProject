@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4332933911453294154}
   - {fileID: 7449680810093919112}
   - {fileID: 8694355624167066002}
+  - {fileID: 1511018369072659849}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4216813995768482973
@@ -328,3 +329,104 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3765950687963219234, guid: 69d12041190a9744faa766fb834deb6c, type: 3}
   m_PrefabInstance: {fileID: 5990294416342826666}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7314319908795513068
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1462046708061581032}
+    m_Modifications:
+    - target: {fileID: 3885611407025006959, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_Name
+      value: KnifeDamageCaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.032
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.113
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.011229916
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2618810077653855945, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3885611407025006959, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6963796302345114534}
+  m_SourcePrefab: {fileID: 100100000, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+--- !u!4 &1511018369072659849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8176733755121632613, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+  m_PrefabInstance: {fileID: 7314319908795513068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5795527751259427203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3885611407025006959, guid: 95ad0135d83660d488e3506e52562bda, type: 3}
+  m_PrefabInstance: {fileID: 7314319908795513068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6963796302345114534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795527751259427203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6b80803ba16549a3b54db8b0ca0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHitCount: 5
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  castType: 0
+  radius: 0.75
+  boxSize: {x: 0, y: 0}

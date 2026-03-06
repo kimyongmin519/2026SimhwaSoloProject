@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Weapon;
+using Weapons;
 
 namespace Core
 {
@@ -11,10 +11,11 @@ namespace Core
         private Controls _controls;
         
         public Vector2 InputDirection { get; private set; }
-        public Vector2 ScreenMousePos { get; private set; }
+        public Vector2 MousePos { get; private set; }
         public event Action OnAttackPressed;
         public event Action OnAttackReleased;
         public event Action OnJumpPressed;
+        public event Action OnReloadPressed;
         public event Action<WeaponType> OnWeaponChanged;
 
         private void OnEnable()
@@ -59,9 +60,15 @@ namespace Core
                 OnJumpPressed?.Invoke();
         }
 
+        public void OnReload(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnReloadPressed?.Invoke();
+        }
+
         public void OnMousePos(InputAction.CallbackContext context)
         {
-            ScreenMousePos = context.ReadValue<Vector2>();
+            MousePos = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
         }
 
         public void OnMainWeapon(InputAction.CallbackContext context)

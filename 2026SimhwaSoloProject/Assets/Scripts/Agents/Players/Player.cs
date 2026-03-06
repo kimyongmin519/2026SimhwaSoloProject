@@ -1,10 +1,11 @@
+using System;
 using Agents.FSM;
 using Agents.Players.States;
 using Core;
-using Core.Modules;
 using Systems;
 using UnityEngine;
-using Weapon;
+using Weapons;
+using Weapons.Melees;
 
 namespace Agents.Players
 {
@@ -21,7 +22,8 @@ namespace Agents.Players
         #region 플레이어 부착
 
         [SerializeField] private TrackingOwner trackingOwner; 
-        private PlayerWeaponHandler _handler;
+        public PlayerWeaponHandler Handler { get; private set; }
+        public IMover Mover { get; private set; }
         
         #endregion
 
@@ -29,14 +31,18 @@ namespace Agents.Players
         {
             base.InitializeComponents();
             _stateMachine = new AgentStateMachine(this, stateList.states);
-            _handler = GetModule<PlayerWeaponHandler>();
-            Debug.Assert(_handler != null, "Player handler is null");
+            Handler = GetModule<PlayerWeaponHandler>();
+            Mover = GetModule<IMover>();
+            Debug.Assert(Handler != null, "Player handler is null");
         }
 
         protected override void AfterInitializeComponents()
         {
             base.AfterInitializeComponents();
             PlayerInput.OnJumpPressed += HandleJumpKeyPressed;
+            PlayerInput.OnAttackPressed += HandleMeleeAttack;
+            Handler.OnWeaponChanged += HandleChangeWeapon;
+            
         }
 
         private void HandleJumpKeyPressed()
@@ -55,12 +61,37 @@ namespace Agents.Players
         {
             _stateMachine.UpdateMachine();
             
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(PlayerInput.ScreenMousePos);
+            Vector2 mousePos = PlayerInput.MousePos;
             
             trackingOwner.SetTrackingPos(mousePos);
+        }
+
+        private void HandleChangeWeapon(float multifier)
+        {
+            ChangeState(PlayerStateEnum.IDLE);
+            Mover.SetMoveSpeedMultiplier(multifier);
+        }
+
+        private void HandleMeleeAttack()
+        {
+            Weapon currentWeapon = Handler.CurrentWeaponClass;
+
+            if (currentWeapon.WeaponData.WeaponType == WeaponType.MELEE
+                && currentWeapon.CanUseWeapon)
+            {
+                currentWeapon.CanUseWeapon = false;
+                ChangeState(PlayerStateEnum.MELEE_ATTACK);
+            }
         }
         
         public void ChangeState(PlayerStateEnum nextState) => _stateMachine.ChangeState((int)nextState);
         public AgentState GetCurrentState() => _stateMachine.CurrentState;
+
+        private void OnDestroy()
+        {
+            PlayerInput.OnJumpPressed -= HandleJumpKeyPressed;
+            PlayerInput.OnAttackPressed -= HandleMeleeAttack;
+            Handler.OnWeaponChanged -= HandleChangeWeapon;
+        }
     }
 }

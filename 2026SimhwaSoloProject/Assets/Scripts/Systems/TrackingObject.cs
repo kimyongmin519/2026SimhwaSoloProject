@@ -19,7 +19,8 @@ namespace Systems
         private Tween _tween;
         private void Awake()
         {
-            _height = transform.position.y;
+            _height = transform.localPosition.y;
+            Debug.Log(_height);
             _originYSize = transform.localScale.y;
         }
         
@@ -37,7 +38,7 @@ namespace Systems
             {
                 _tween.Kill();
                 _tween = transform.DOLocalMove(
-                 (targetPos / posDistance) - (Vector2.up * _height), smoothPosDelay);
+                 (targetPos / posDistance) + (Vector2.up * _height), smoothPosDelay);
             }
             if (canFlip)
             {

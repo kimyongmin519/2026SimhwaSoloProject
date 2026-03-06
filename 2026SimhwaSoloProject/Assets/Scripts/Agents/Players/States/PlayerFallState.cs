@@ -13,7 +13,7 @@ namespace Agents.Players.States
         {
             base.Update();
             
-            if (_mover.IsGrounded)
+            if (_player.Mover.IsGrounded)
                 _player.ChangeState(PlayerStateEnum.IDLE);
         }
     }

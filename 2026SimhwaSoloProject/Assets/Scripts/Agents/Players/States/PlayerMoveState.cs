@@ -15,14 +15,14 @@ namespace Agents.Players.States
             base.Update();
             float xInput = _player.PlayerInput.InputDirection.x;
             
-            _mover.SetMovement(xInput);
+            _player.Mover.SetMovement(xInput);
 
             if (Mathf.Approximately(xInput, 0f))
             {
                 _player.ChangeState(PlayerStateEnum.IDLE);
             }
             
-            if(!_mover.IsGrounded)
+            if(!_player.Mover.IsGrounded)
                 _player.ChangeState(PlayerStateEnum.FALL);
         }
     }

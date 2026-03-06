@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7348330506333758843}
   - component: {fileID: 1088495652228551023}
   - component: {fileID: 7202935144783121697}
-  - component: {fileID: 2584298299372191777}
+  - component: {fileID: 3446717237854696452}
+  - component: {fileID: -6258433804948977029}
   m_Layer: 0
   m_Name: Effect Prefab
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8353394, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,7 +112,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2584298299372191777
+--- !u!114 &3446717237854696452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654639048628383907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3e6f3a3a4d435bbcb8b4f43158ba8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PoolItem>k__BackingField: {fileID: 11400000, guid: 1ffe6270a232cf44295aed7699d0c38d, type: 2}
+  animatorEffect: {fileID: -6258433804948977029}
+--- !u!114 &-6258433804948977029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,3 +139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnFinish: 0
+  <PoolItem>k__BackingField: {fileID: 11400000, guid: 1ffe6270a232cf44295aed7699d0c38d, type: 2}

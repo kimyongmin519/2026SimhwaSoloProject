@@ -1,8 +1,8 @@
 using System.Collections;
 using _06.GameLib.ObjectPool.Runtime;
-using _06.GameLib.Runtime;
 using Systems.CombatSystem.EffectSystem;
 using Systems.GameEvents;
+using Systems.GameEvents.ChannelEvent;
 using UnityEngine;
 
 namespace Systems.Manager
@@ -18,11 +18,13 @@ namespace Systems.Manager
         private void Awake()
         {
             CreateChannel.AddListener<CreateEffectEvent>(HandleCreateEffect);
+            CreateChannel.AddListener<CreateObjectEvent>(HandleCreateParticle);
         }
 
         private void OnDestroy()
         {
-            CreateChannel.RemoveListener<CreateEffectEvent>(HandleCreateEffect);;
+            CreateChannel.RemoveListener<CreateEffectEvent>(HandleCreateEffect);
+            CreateChannel.RemoveListener<CreateObjectEvent>(HandleCreateParticle);
         }
 
         private void HandleCreateEffect(CreateEffectEvent evt)
@@ -41,8 +43,30 @@ namespace Systems.Manager
                 effect.PlayerEffectClip(evt.ClipHash, evt.Duration);
             }
         }
+        
+        private void HandleCreateParticle(CreateObjectEvent evt)
+        {
+            if (evt.IsPoolingEffect)
+            {
+                PoolMono effect = poolManager.Pop<PoolMono>(evt.PoolItem);
+                effect.transform.position = evt.Position;
+                effect.transform.rotation = evt.Rotation;
+                StartCoroutine(HandleLifeTimeEnd(effect, evt.Duration));
+            }
+            else
+            {
+                GameObject effectObject = Instantiate(effectPrefab, evt.Position, evt.Rotation);
+                PoolMono effect = effectObject.GetComponent<PoolMono>();
+            }
+        }
 
         private IEnumerator HandleLifeTimeEnd(PoolAnimateEffect effect, float evtDuration)
+        {
+            yield return new WaitForSeconds(evtDuration);
+            poolManager.Push(effect);
+        }
+        
+        private IEnumerator HandleLifeTimeEnd(PoolMono effect, float evtDuration)
         {
             yield return new WaitForSeconds(evtDuration);
             poolManager.Push(effect);

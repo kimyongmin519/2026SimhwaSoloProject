@@ -12,7 +12,7 @@ namespace Agents.Players.States
         public override void Enter()
         {
             base.Enter();
-            _mover.StopImmediately(true,false);
+            _player.Mover.StopImmediately(true,false);
         }
 
         public override void Update()

@@ -48,7 +48,6 @@ namespace Systems.CombatSystem
         public void ApplyDamage(float damage)
         {
             CurrentHealth -= damage;
-            Debug.Log(CurrentHealth);
         }
 
     }

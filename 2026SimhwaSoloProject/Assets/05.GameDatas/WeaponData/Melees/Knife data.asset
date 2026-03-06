@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Knife data
   m_EditorClassIdentifier: 
   <PingHeight>k__BackingField: 0.1
+  <WeaponMoveSpeedMultifier>k__BackingField: 1.25
   <WeaponPrefab>k__BackingField: {fileID: 5394467769099339092, guid: 8ed15ad1dee4b1c4e90e200560bf05b8, type: 3}
   <WeaponType>k__BackingField: 2
+  <Damage>k__BackingField: 50
+  <EquipAnimClip>k__BackingField: {fileID: 7400000, guid: 68567bed977dba84a91bc942ffba92f8, type: 2}
+  <IdleAnimClip>k__BackingField: {fileID: 7400000, guid: affaedbc9ceffd343a7545fd67173af0, type: 2}
+  <AttackAnimClip>k__BackingField: {fileID: 7400000, guid: f3966681a73ad8e49a7d000fdfb38323, type: 2}

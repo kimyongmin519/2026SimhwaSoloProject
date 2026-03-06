@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Pistol data
   m_EditorClassIdentifier: 
   <PingHeight>k__BackingField: -0.05
+  <WeaponMoveSpeedMultifier>k__BackingField: 1
   <WeaponPrefab>k__BackingField: {fileID: 6121617755787498727, guid: c3c143b7a3020dc4b8d202eb44865806, type: 3}
   <WeaponType>k__BackingField: 1
   <Ammo>k__BackingField: 12
   <MaxAmmo>k__BackingField: 36
-  <Damage>k__BackingField: 1
+  <Damage>k__BackingField: 10
   <HeadShotDamage>k__BackingField: 3
   <CanAutoFire>k__BackingField: 0
   <EquipAnimClip>k__BackingField: {fileID: 7400000, guid: a23e6eaa45c1aa24985c74412b319b0f, type: 2}
@@ -25,3 +26,4 @@ MonoBehaviour:
   <ShotAnimClip>k__BackingField: {fileID: 7400000, guid: 7f59a64b4d46cf94698a572bdca62d44, type: 2}
   <ReloadAnimClip>k__BackingField: {fileID: 0}
   <BulletPrefab>k__BackingField: {fileID: 6156779373088864098, guid: 7c5918d75cf61d648b9e9a97416467c0, type: 3}
+  <MagsSprite>k__BackingField: {fileID: -8210258048735332350, guid: fad2fdeb48cebf84c880d46aaf278003, type: 3}

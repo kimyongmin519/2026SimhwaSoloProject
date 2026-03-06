@@ -1,3 +1,4 @@
+using System;
 using Core.Modules;
 using Systems.AnimationSystem;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 namespace Agents
 {
     [RequireComponent(typeof(Animator))]
-    public class AgentRenderer : MonoBehaviour, IModule, IRenderer
+    public class AgentRenderer : MonoBehaviour, IModule, IRenderer, IAnimationTrigger
     {
         private Agent _owner;
         private Animator _animator;
@@ -35,5 +36,17 @@ namespace Agents
             
         }
 
+        public event Action OnAnimationAttackTrigger;
+        public event Action OnAnimationEndTrigger;
+
+        public void AnimationAttackTrigger()
+        {
+            OnAnimationAttackTrigger?.Invoke();
+        }
+
+        public void AnimationEndTrigger()
+        {
+            OnAnimationEndTrigger?.Invoke();
+        }
     }
 }

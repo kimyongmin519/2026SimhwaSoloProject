@@ -21,6 +21,11 @@ namespace Systems.CombatSystem
         {
             OnHitDamage.Invoke(damage * damageMultiplier);
 
+            HitDirecting();
+        }
+
+        public void HitDirecting()
+        {
             if (_hitSequence != null && _hitSequence.IsActive())
                 _hitSequence.Complete();
 
