@@ -1,0 +1,52 @@
+.blue-btn {
+    width: 80px;
+    height: 55px;
+    background-color: rgb(16, 80, 255);
+    -unity-font-style: bold;
+    border-left-color: rgb(20, 63, 255);
+    border-right-color: rgb(20, 63, 255);
+    border-top-color: rgb(20, 63, 255);
+    border-bottom-color: rgb(20, 63, 255);
+    border-top-width: 1.5px;
+    border-right-width: 1.5px;
+    border-bottom-width: 1.5px;
+    border-left-width: 1.5px;
+    font-size: 20px;
+}
+
+.blue-btn:hover {
+    background-color: rgb(66, 120, 255);
+    border-left-color: rgb(40, 53, 255);
+    border-right-color: rgb(40, 53, 255);
+    border-top-color: rgb(40, 53, 255);
+    border-bottom-color: rgb(40, 53, 255);
+    transition-duration: 0.25s;
+}
+
+.pop-up-window {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(207, 207, 207, 0.39);
+    visibility: hidden;
+    opacity: 0;
+    justify-content: center;
+}
+
+.pop-up-content {
+    flex-grow: 0;
+    width: 800px;
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.pop-up-window.open {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: 0.3s;
+}

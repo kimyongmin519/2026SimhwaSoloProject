@@ -1,12 +1,23 @@
+using System;
+using _06.GameLib.SoundSystem;
 using UnityEngine;
 
 namespace Weapons
 {
+    [Serializable]
+    public struct WeaponSound
+    {
+        public string soundName;
+        public SoundClipSO soundClip;
+    }
     public class WeaponDataSO : ScriptableObject
     {
         [field:SerializeField] public float PingHeight {get; private set;}
         [field: SerializeField] public float WeaponMoveSpeedMultifier { get; private set; } = 1f;
         [field: SerializeField] public GameObject WeaponPrefab { get; private set; }
         [field:SerializeField] public WeaponType WeaponType {get; private set;}
+        
+        [field:SerializeField] public WeaponSound[] WeaponSounds { get; private set; }
+        [field:SerializeField] public Sprite WeaponImage { get; private set; }
     }
 }

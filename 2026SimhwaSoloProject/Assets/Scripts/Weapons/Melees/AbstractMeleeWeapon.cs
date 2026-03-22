@@ -1,5 +1,5 @@
 using System.Collections;
-using Systems.CombatSystem;
+using GameSystems.CombatSystem;
 using UnityEngine;
 
 namespace Weapons.Melees

@@ -1,4 +1,4 @@
-using Systems.CombatSystem;
+using GameSystems.CombatSystem;
 using UnityEngine;
 
 namespace Weapons.Guns
@@ -11,9 +11,8 @@ namespace Weapons.Guns
         [field:SerializeField] public int MaxAmmo {get; private set;}
         [field:SerializeField] public float Damage {get; private set;}
         [field:SerializeField] public float HeadShotDamage {get; private set;}
-
-        [field: SerializeField,Header("여부값")]
-        public bool CanAutoFire {get; private set;}
+        [field:SerializeField] public float ShotImpulse {get; private set;}
+        [field:SerializeField] public int GunPrice {get; private set;}
 
         [field: SerializeField,Header("총 구성값")]
         public AnimationClip EquipAnimClip { get; private set; }

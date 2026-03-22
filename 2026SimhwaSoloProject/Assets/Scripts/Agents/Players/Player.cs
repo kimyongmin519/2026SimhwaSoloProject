@@ -1,11 +1,9 @@
-using System;
 using Agents.FSM;
 using Agents.Players.States;
 using Core;
-using Systems;
+using GameSystems;
 using UnityEngine;
 using Weapons;
-using Weapons.Melees;
 
 namespace Agents.Players
 {

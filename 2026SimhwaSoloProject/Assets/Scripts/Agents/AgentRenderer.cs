@@ -1,6 +1,6 @@
 using System;
 using Core.Modules;
-using Systems.AnimationSystem;
+using GameSystems.AnimationSystem;
 using UnityEngine;
 
 namespace Agents
@@ -17,8 +17,14 @@ namespace Agents
         {
             _owner = owner as Agent;
             Debug.Assert(_owner != null, $"Failed owner casting. : {gameObject.name}");
-            _animator = owner.GetComponent<Animator>();
+            _animator = GetComponentInChildren<Animator>();
         }
+
+        public void PlayClip(AnimParamSO param)
+        {
+            PlayClip(param.HashValue);
+        }
+        
         
         public void PlayClip(int clipHash, int layer = -1, float normalPosition = float.NegativeInfinity)
             => _animator.Play(clipHash, layer, normalPosition);

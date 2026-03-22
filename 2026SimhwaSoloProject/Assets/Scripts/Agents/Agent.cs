@@ -1,6 +1,6 @@
 using System;
 using Core.Modules;
-using Systems.CombatSystem;
+using GameSystems.CombatSystem;
 
 namespace Agents
 {

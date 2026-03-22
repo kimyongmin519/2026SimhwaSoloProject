@@ -1,5 +1,5 @@
 using System;
-using Systems.AnimationSystem;
+using GameSystems.AnimationSystem;
 using UnityEngine;
 
 namespace Weapons
@@ -9,7 +9,7 @@ namespace Weapons
         [SerializeField] private AnimParamSO defaultAnimParam;
         
         private Animator _animator;
-        private void Awake()
+        protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();
         }

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd868224176c4f0ca34bd713b357c93c, type: 3}
+  m_Name: Reaper data
+  m_EditorClassIdentifier: 
+  <PingHeight>k__BackingField: -0.125
+  <WeaponMoveSpeedMultifier>k__BackingField: 0.95
+  <WeaponPrefab>k__BackingField: {fileID: 7347197361919774738, guid: dd38978b23f24f149b552684684e0c15, type: 3}
+  <WeaponType>k__BackingField: 0
+  <WeaponSounds>k__BackingField: []
+  <WeaponImage>k__BackingField: {fileID: 5866098357320517723, guid: c6414357bb3f1114ca07c8a0505655b6, type: 3}
+  <Ammo>k__BackingField: 6
+  <MaxAmmo>k__BackingField: 24
+  <Damage>k__BackingField: 55
+  <HeadShotDamage>k__BackingField: 150
+  <ShotImpulse>k__BackingField: 0.35
+  <GunPrice>k__BackingField: 800
+  <EquipAnimClip>k__BackingField: {fileID: 7400000, guid: 1a358151de7993c4fbc07e965b484a2f, type: 2}
+  <IdleAnimClip>k__BackingField: {fileID: 7400000, guid: bc3f8233ace78c84cb923b0820db6e00, type: 2}
+  <ShotAnimClip>k__BackingField: {fileID: 7400000, guid: bc3f8233ace78c84cb923b0820db6e00, type: 2}
+  <ReloadAnimClip>k__BackingField: {fileID: 7400000, guid: 1f2bb5057a655c0449258f38e8a39356, type: 2}
+  <BulletPrefab>k__BackingField: {fileID: 6156779373088864098, guid: 7c5918d75cf61d648b9e9a97416467c0, type: 3}
+  <MagsSprite>k__BackingField: {fileID: 8285299323489334024, guid: 53907f8b8c761dd42b944f6daf8dfb01, type: 3}

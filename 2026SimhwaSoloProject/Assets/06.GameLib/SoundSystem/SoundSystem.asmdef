@@ -1,0 +1,17 @@
+{
+    "name": "SoundSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:57bb190a25d36b04ba0fd03f3712c50f",
+        "GUID:1c70d45c178284741a4d78999b2ddfab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

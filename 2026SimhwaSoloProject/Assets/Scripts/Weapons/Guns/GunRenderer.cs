@@ -1,18 +1,26 @@
-using Systems.GameEvents.BusEvent;
-using Systems.GameEvents.BusEvent.BusEvents.GunEvents;
+using UnityEngine;
 
 namespace Weapons.Guns
 {
     public class GunRenderer : WeaponRenderer
     {
+        private AbstractGun _ownerGun;
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            _ownerGun = GetComponent<AbstractGun>();
+            Debug.Assert(_ownerGun != null, "_ownerGun != null");
+        }
         public void DropMags()
         {
-            KimBus<MagsDropEvent>.RaiseEvent(new MagsDropEvent());
+            _ownerGun.MagsDrop();
         }
 
         public void ReloadAmmo()
         {
-            KimBus<AmmoReloadEvent>.RaiseEvent(new AmmoReloadEvent());
+            _ownerGun.AmmoReload();
         }
+
     }
 }

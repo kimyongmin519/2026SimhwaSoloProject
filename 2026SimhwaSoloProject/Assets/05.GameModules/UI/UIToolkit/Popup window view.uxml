@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/UI/PopUp%20window%20styles.uss?fileID=7433441132597879392&amp;guid=d99748c8e85f6e14190991d2b082ea23&amp;type=3#PopUp window styles" />
+    <ui:VisualElement name="TopContainer" style="flex-grow: 0; flex-basis: 200px; justify-content: flex-start; align-self: auto; flex-direction: row;">
+        <Test.DataButton name="Button1" button-index="1" text="Button1" class="blue-btn" />
+        <Test.DataButton name="Button2" button-index="2" text="Button2" class="blue-btn" />
+        <Test.DataButton name="Button3" button-index="3" text="Button3" class="blue-btn" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PopUpWindow" class="pop-up-window open" style="top: 3px; left: 26px; align-items: center; transition-duration: 0.3s;">
+        <ui:VisualElement name="PopUpContent" class="pop-up-content" style="justify-content: flex-start; align-items: stretch; align-self: auto; align-content: flex-start; flex-direction: column; height: 600px; flex-grow: 1; position: absolute; visibility: visible; opacity: 1; background-color: rgb(241, 241, 241); top: 240px; left: 562px; transition-duration: 0.3s; translate: 0 -200%;">
+            <ui:VisualElement style="flex-grow: 0; flex-basis: 80px; border-bottom-width: 0; -unity-text-align: middle-left;">
+                <ui:Label text="팝업창 야르띠띠" name="Label" style="flex-grow: 1; font-size: 28px; color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 25px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Content" style="flex-grow: 1;" />
+            <ui:VisualElement name="Under" style="flex-grow: 0; flex-basis: 70px; align-self: flex-end; justify-content: flex-end; margin-bottom: 2px; margin-right: 1px;">
+                <Test.DataButton text="닫기" button-index="4" name="CloseBtn" class="blue-btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

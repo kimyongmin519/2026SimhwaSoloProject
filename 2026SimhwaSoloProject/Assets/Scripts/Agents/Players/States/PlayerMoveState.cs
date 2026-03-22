@@ -1,5 +1,4 @@
 using Agents.FSM;
-using Systems.AnimationSystem;
 using UnityEngine;
 
 namespace Agents.Players.States

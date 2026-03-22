@@ -1,7 +1,9 @@
 using System;
+using _06.GameLib.EventSystem;
 using Agents.Players;
 using Core;
 using Core.Modules;
+using GameSystems.GameEvents.ChannelEvent;
 using UnityEngine;
 using Weapons.Guns;
 
@@ -10,11 +12,10 @@ namespace Weapons
     public class PlayerWeaponHandler : WeaponHandler
     {
         private Player _player;
-        [SerializeField] private WeaponDataSO testWeaponData;
+        [SerializeField] private Transform weaponCenter;
         [SerializeField] private PlayerInputSO playerInput;
-        [SerializeField] private Transform ping;
-        [SerializeField] private Weapon testWeapon;
-
+        [SerializeField] private EventChannelSO playerChannel;
+         
         public Weapon CurrentWeaponClass { get; private set; }
 
         [SerializeField] private WeaponType startWeaponType;
@@ -34,15 +35,10 @@ namespace Weapons
             _currentWeapon.Value = _inventoryDict[startWeaponType];
             CurrentWeaponClass = _currentWeapon.Value.GetComponent<Weapon>();
             Debug.Assert(CurrentWeaponClass != null, $"{gameObject.name} Start weapon is null");
-
+            
             ChangeWeapon(startWeaponType);
         }
-
-        private void Start()
-        {
-            //InventoryChanged(testWeapon);
-        }
-
+        
         public void ChangeWeapon(WeaponType type)
         {
             if (_inventoryDict[type] == null) return;
@@ -66,6 +62,8 @@ namespace Weapons
             _currentWeapon.Value = _inventoryDict[type];
             Debug.Assert(_currentWeapon.Value != null, "Change weapon is null");
 
+            _currentWeapon.Value.gameObject.SetActive(true);
+            
             CurrentWeaponClass = _currentWeapon.Value.GetComponent<Weapon>();
             
             gunClass = CurrentWeaponClass as AbstractGun;
@@ -74,22 +72,30 @@ namespace Weapons
             _player.PlayerInput.OnAttackReleased += CurrentWeaponClass.WeaponCancel;
             if (gunClass != null)
                 _player.PlayerInput.OnReloadPressed += gunClass.GunReload;
-            _currentWeapon.Value.gameObject.SetActive(true);
+            
             CurrentWeaponClass.WeaponSetting();
             CurrentWeaponClass.WeaponEquip();
             
             OnWeaponChanged?.Invoke(CurrentWeaponClass.WeaponData.WeaponMoveSpeedMultifier);
+            
+            playerChannel.RaiseEvent(PlayerUIEvent.PlayerInventoryChange.Init(CurrentWeaponClass));
         }
 
-        public void InventoryChanged(Weapon weapon)
+        public void InventoryChanged(PlayerInventoryChange evt)
         {
-            Weapon newWeapon = Instantiate(weapon, ping);
+            Weapon newWeapon = Instantiate(evt.Weapon.WeaponData.WeaponPrefab, weaponCenter).GetComponent<Weapon>();
 
             if (_inventoryDict[newWeapon.WeaponData.WeaponType] != null)
             {
-                Instantiate(weapon, transform.position, Quaternion.identity);
+                Destroy(_inventoryDict[newWeapon.WeaponData.WeaponType]);
                 _inventoryDict[newWeapon.WeaponData.WeaponType] = newWeapon.gameObject;
             }
+            else
+            {
+                _inventoryDict[newWeapon.WeaponData.WeaponType] = newWeapon.gameObject;
+            }
+            
+            ChangeWeapon(newWeapon.WeaponData.WeaponType);
         }
 
         private void Update()
@@ -102,5 +108,6 @@ namespace Weapons
         {
             _player.PlayerInput.OnWeaponChanged -= ChangeWeapon;
         }
+
     }
 }
